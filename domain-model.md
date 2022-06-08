@@ -11,3 +11,11 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | | | item does not exist | thrown error | `findBy(1) => thrown error "Item not Found"`
 | | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy(@Int) => {id: 1, text: "hello", status: "incomplete"}`
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
+| | | charLimit() | | | display just the first 20chars when displaying all items | `charLimit() => [{id: 1, text: "hello...", status: "incomplete}]`
+
+
+if (this.items.length > 1) {
+    for (let i : 0; i < this.items.length; i++) {
+        this.items[i].text.substring(0, 21)
+    }
+}

@@ -36,6 +36,20 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
+
+  charLimit() {
+    let newItems = ""
+    if (this.items.length > 1) {
+      for (let i = 0; i < this.items.length; i++) {
+        newItems = this.items[i].text.substring(0, 21) + "..."
+        this.items[i].text = newItems
+        console.log("char limit", this.items)
+      }
+      return this.items
+    }
+
+    return this.items
+  }
 }
 
 module.exports = TodoList

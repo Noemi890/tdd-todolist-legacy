@@ -141,4 +141,29 @@ describe("TodoList", () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
   })
+
+  it("shows just the first 20chars in text", () => {
+    const item1 = todoList.create("turn the heating")
+    const item2 = todoList.create("go to the gym! go to the gym! go to the gym!")
+    const item3 = todoList.create("go grocery shopping! go grocery shopping! go grocery shopping!")
+
+    const expected = [{
+      id: 1,
+      text: "turn the heating...",
+      status: "incomplete"
+      },
+      {
+      id: 2,
+      text: "go to the gym! go to ...",
+      status: "incomplete"
+      },
+      {
+      id: 3,
+      text: "go grocery shopping! ...",
+      status: "incomplete"
+      }
+    ]
+    const result = todoList.charLimit()
+    expect(result).toEqual(expected)
+  })
 })
